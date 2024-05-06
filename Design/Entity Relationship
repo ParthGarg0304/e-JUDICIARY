@@ -1,0 +1,32 @@
+2.1   Identification of Entity and Relationships
+ Entities
+•	User: Attributes of a User include USER_ID (Primary Key), USERNAME, DOB, Password, Hash_password, phone number, role, and email.
+•	Case: Attributes of a case include CASE_ID (Primary Key), USER_ID (Foreign Key), FILING_DATE, DESCRIPTION, STATUS, TITLE, RESOLUTION_DATE, HEARING_DATE.
+•	Court: Attributes of Court include COURT_ID (Primary Key), NAME, TYPE, LOCATION, STATE, DISTRICT, PIN. 
+•	Document: Attributes of Document include DOCUMENT_ID (Primary Key), CASE_ID (Foreign Key), CONTENT, TYPE, SUBMISSION_DATE. 
+•	Legal Fees: Attributes of Legal Fees inclure FEES_ID (Primary Key), CASE_ID (Foreign Key), PAYMENT_DATE, STATUS, PAYEE_ID, TYPE, DATE_ISSUED. 
+•	Hearing: It has attributes named HEARING_ID (Primary Key), CASE_ID (Foreign Key), SCHEDULE_ID (Foreign Key), SUMMARY, OUTCOME. 
+•	Schedule: It has an attributes named SCHEDULE_ID (Primary Key), COURT_ID (Foreign Key), HEARING_DATE, AGENDA.
+•	Notification: It has attributes namely as NOTIFICATION_ID (Primary Key), USER_ID (Foreign Key), STATUS, DATE, MESSAGE, DETAIL_SENT.
+
+Composite Attributes
+Composite attributes such as NAME (with First_Name, Middle_Name, Last_Name) in the diagram should be broken down into their constituent parts as separate columns in the corresponding table.
+
+
+Multi-Valued Attributes
+Composite attributes such as NAME (with First_Name, Middle_Name, Last_Name) in the diagram should be broken down into their constituent parts as separate columns in the corresponding table.
+
+Relationships
+•	User to Case: A one-to-many relationship indicating that a single user can be associated with multiple cases, either as a lawyer, a judge, or a litigant. 
+•	Case to Court: A many-to-one relationship, as multiple cases can be handled by a single court, but a case is heard in one court at a time.
+•	Case to Document: A one-to-many relationship, where each case can have multiple documents associated with it.
+•	Case to Schedule, Hearing, and Legal Fees: These one-to-many relationships indicate that each case can have multiple schedules, hearings, and legal fee entries.
+•	User to Notification: A one-to-many relationship, showing that a user can receive multiple notifications related to cases, hearings, and other judicial activities. 
+
+Relationship to Foreign Keys
+•	The CASE table has a USER_ID column which is a foreign key linking to the User table.
+•	The Document table has a CASE_ID column which is a foreign key linking to the Case table.
+•	The Legal_Fees table has a CASE_ID column which is a foreign key linking to the Case table.
+•	The Hearing table has a CASE_ID and a SCHEDULE_ID which are foreign keys linking to the Case and Schedule tables respectively.
+•	The Schedule table has a COURT_ID column which is a foreign key linking to the Court table. 
+•	The Notification table has a USER_ID column which is a foreign key linking to the User table.
